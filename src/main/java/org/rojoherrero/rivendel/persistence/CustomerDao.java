@@ -8,9 +8,9 @@ public interface CustomerDao {
 
 	void registerCustomer(Customer customer) throws Exception;
 	void removeCustomerById(long id) throws Exception;
-	void modifyCustomerById(long id) throws Exception;
-	Customer retriveCustomerByName(String Name) throws Exception; 
+	void modifyCustomer(Customer customer) throws Exception; 
+	Customer retriveCustomerById(long id) throws Exception;
 	Collection<Customer> retrieveAllCustomers() throws Exception;
-	Collection<Customer> retrieveCustomersByName() throws Exception;
+	Collection<Customer> retrieveCustomersByName(String Name) throws Exception;
 	
 }

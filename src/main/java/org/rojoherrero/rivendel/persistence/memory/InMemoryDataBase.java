@@ -31,7 +31,7 @@ public class InMemoryDataBase {
 		return(customerTable.get(id));
 	}
 
-	public Collection<Customer> retrieveAllCustomer() {
+	public Collection<Customer> retrieveAllCustomers() {
 		return (customerTable.values());
 	}
 
