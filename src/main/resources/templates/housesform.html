@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>RREA House Serch</title>
+<link href="/css/main.css" rel="stylesheet" />
+</head>
+<body>
+	<h1>For search your new house, please fill the form below</h1>
+	<form action="#" th:action="@{/housesquery}" th:object="${houseForm}"
+		method="post">
+		<table>
+			<tr>
+				<td><input type="text" th:field="*{town}" /></td>
+				<td th:if="${#fields.hasErrors('town')}" th:errors="*{town}">Town
+					Error</td>
+			</tr>
+			<tr>
+				<td>
+					<button type="submit">Submit</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

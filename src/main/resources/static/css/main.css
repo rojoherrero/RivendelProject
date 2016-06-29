@@ -3,4 +3,19 @@
 body {
 	background-color: black;
 	color: white;
+	margin: 0;
+}
+
+.main-page-header {
+	text-align: center;
+	background-color: gray;
+	color: aqua;
+	height: 15%;
+}
+
+.navigation-bar {
+	display: inline;
+	height: 7.5%;
+	background-color: aqua;
+	color: gray;
 }
