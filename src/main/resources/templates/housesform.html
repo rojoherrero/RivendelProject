@@ -8,6 +8,10 @@
 <body>
 	<header class="page-header">
 		<h1>For search your new house, please fill the form below</h1>
+		<ul>
+			<li><a th:href="@{/aboutus}">About Us</a></li>
+			<li><a th:href="@{/index}">Main Page</a></li>
+		</ul>
 	</header>
 	<form action="#" th:accept="@{/housesquery}"
 		th:object="${houseSearchForm}" method="post">
@@ -35,6 +39,9 @@
 				<td><input type="text" th:field="*{quarter}" /></td>
 				<td th:if="${#fields.hasErrors('quarter')}" th:errors="*{town}">Town
 					Error</td>
+			</tr>
+			<tr>
+				<td><button type="submit">Submit</button></td>
 			</tr>
 		</table>
 	</form>

@@ -11,11 +11,11 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Controller
-public class AvailableHouseController extends WebMvcConfigurerAdapter {
+public class HouseSearchController extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/houseslist").setViewName("houseslist");
+		registry.addViewController("/searchresult").setViewName("houseslist");
 	}
 
 	@RequestMapping(value = "/housesearch", method = RequestMethod.GET)
@@ -28,6 +28,9 @@ public class AvailableHouseController extends WebMvcConfigurerAdapter {
 		if (bindingResult.hasErrors()) {
 			return ("housesform");
 		}
+		
+		System.out.println(houseSearchForm.toString());
+		System.out.println(bindingResult.toString());
 
 		return ("redirect:/houseslist");
 	}
