@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
 <title>Rivendel Real State Agency</title>
 <link href="/css/main.css" rel="stylesheet" />
 </head>
 <body>
-	<header class="main-page-header">
+	<header class="page-header">
 		<h1>Welcome to the Rivendel Real State Agency</h1>
 	</header>
 	<nav class="navigation-bar">
 		<ul>
-			<li><a href="/newcustomer">New Customer Registration</a></li>
-			<li><a href="/housesquery">All Available Houses</a></li>
+			<li><a th:href="@{/housesearch}">Search for Available Houses</a></li>
+			<li><a th:href="@{/aboutus}">About Us</a></li>
 		</ul>
 	</nav>
 </body>

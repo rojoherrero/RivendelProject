@@ -2,7 +2,7 @@ package org.rojoherrero.rivendel.controller;
 
 import javax.validation.Valid;
 
-import org.rojoherrero.rivendel.model.entities.HouseForm;
+import org.rojoherrero.rivendel.model.entities.HouseSearchForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,20 +18,18 @@ public class AvailableHouseController extends WebMvcConfigurerAdapter {
 		registry.addViewController("/houseslist").setViewName("houseslist");
 	}
 
-	@RequestMapping(value = "/housesquery", method = RequestMethod.GET)
-	public String housesForm(HouseForm houseForm) {
+	@RequestMapping(value = "/housesearch", method = RequestMethod.GET)
+	public String housesForm(HouseSearchForm houseSearchForm) {
 		return ("housesform");
 	}
 
-	@RequestMapping(value = "/housesquery", method = RequestMethod.POST)
-	public String checkHousesForm(@Valid HouseForm houseForm, BindingResult bindingResult) {
+	@RequestMapping(value = "/housesearch", method = RequestMethod.POST)
+	public String checkHousesForm(@Valid HouseSearchForm houseSearchForm, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			return ("housesform");
 		}
-		
-		System.out.println(houseForm.toString());
 
-		return ("houseslist");
+		return ("redirect:/houseslist");
 	}
 
 }

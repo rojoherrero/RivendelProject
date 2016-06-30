@@ -1,10 +1,8 @@
 package org.rojoherrero.rivendel.model.entities;
 
-import javax.validation.constraints.Min;
-
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class HouseForm {
+public class HouseSearchForm {
 
 	@NotEmpty
 	private String town;
@@ -12,7 +10,6 @@ public class HouseForm {
 	@NotEmpty
 	private String country;
 
-	@Min(20)
 	private long surface;
 
 	private String quarter;

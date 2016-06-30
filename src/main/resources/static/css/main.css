@@ -6,7 +6,7 @@ body {
 	margin: 0;
 }
 
-.main-page-header {
+.page-header {
 	text-align: center;
 	background-color: gray;
 	color: aqua;
@@ -15,7 +15,9 @@ body {
 
 .navigation-bar {
 	display: inline;
+	list-style-type: none;
 	height: 7.5%;
 	background-color: aqua;
 	color: gray;
+	display: inline;
 }
