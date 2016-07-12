@@ -1,4 +1,4 @@
-package org.rojoherrero.rivendel.model.entities;
+package org.rojoherrero.rivendel.model;
 
 import org.hibernate.validator.constraints.NotEmpty;
 

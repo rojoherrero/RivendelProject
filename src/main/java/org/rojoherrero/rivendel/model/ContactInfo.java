@@ -1,4 +1,4 @@
-package org.rojoherrero.rivendel.model.entities;
+package org.rojoherrero.rivendel.model;
 
 public class ContactInfo {
 

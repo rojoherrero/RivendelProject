@@ -2,7 +2,7 @@ package org.rojoherrero.rivendel.controller;
 
 import javax.validation.Valid;
 
-import org.rojoherrero.rivendel.model.entities.HouseSearchForm;
+import org.rojoherrero.rivendel.model.HouseSearchForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
