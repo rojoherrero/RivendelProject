@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="#" th:action="@{/house_registration}"
+		th:object="${houseRegistrationForm}" method="post">
+		<table>
+			<tr>
+				<td>Quarter:</td>
+				<td><input type="text" th:field="*{quarter}" /></td>
+				<td th:if="${#fields.hasErrors('quarter')}" th:errors="*{quarter}">Street
+					Name Error</td>
+			</tr>
+			<tr>
+				<td>Street Name:</td>
+				<td><input type="text" th:field="*{streetName}" /></td>
+				<td th:if="${#fields.hasErrors('streetName')}"
+					th:errors="*{streetName}">Street Name Error</td>
+			</tr>
+			<tr>
+				<td>Street Number:</td>
+				<td><input type="text" th:field="*{streetNumber}" /></td>
+				<td th:if="${#fields.hasErrors('streetNumber')}"
+					th:errors="*{streetNumber}">Street Name Error</td>
+			</tr>
+			<tr>
+				<td>ZIP Code:</td>
+				<td><input type="text" th:field="*{zipCode}" /></td>
+				<td th:if="${#fields.hasErrors('zipCode')}" th:errors="*{zipCode}">Street
+					Name Error</td>
+			</tr>
+			<tr>
+				<td>Town:</td>
+				<td><input type="text" th:field="*{town}" /></td>
+				<td th:if="${#fields.hasErrors('town')}" th:errors="*{town}">Street
+					Name Error</td>
+			</tr>
+			<tr>
+				<td>Cpuntry:</td>
+				<td><input type="text" th:field="*{country}" /></td>
+				<td th:if="${#fields.hasErrors('country')}" th:errors="*{country}">Street
+					Name Error</td>
+			</tr>
+			<tr>
+				<td>House surface (m<sup>2</sup>):
+				</td>
+				<td><input type="text" th:field="*{houseSurface}" /></td>
+				<td th:if="${#fields.hasErrors('houseSurface')}"
+					th:errors="*{houseSurface}">Street Name Error</td>
+			</tr>
+			<tr>
+				<td>House surface (m<sup>2</sup>):
+				</td>
+				<td><input type="text" th:field="*{gardenSurface}" /></td>
+				<td th:if="${#fields.hasErrors('gardenSurface')}"
+					th:errors="*{gardenSurface}">Street Name Error</td>
+			</tr>
+			<tr>
+				<td>
+					<button type="submit">Submit your query</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
