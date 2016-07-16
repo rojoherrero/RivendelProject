@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+
+	<ul th:each="house : ${houses}">
+		<li th:text="'Street name = ' + ${house.streetName}">Street</li>
+		<li th:text="'Street number = ' + ${house.streetNumber}">Number</li>
+		<li th:text="'Quarter = ' + ${house.quarter}">Quarter</li>
+		<li th:text="'Zip Code = ' + ${house.zipCode}">Zip code</li>
+		<li th:text="'Country = ' + ${house.country}">Country</li>
+		<li
+			th:utext="'House Surface = ' + ${house.houseSurface} + 'm&lt;sup&gt;2&lt;/sup&gt;'">House
+			Surface</li>
+		<li
+			th:utext="'Garden Surface = ' + ${house.gardenSurface} + 'm&lt;sup&gt;2&lt;/sup&gt;'">Garden
+			Surface</li>
+		<li
+			th:utext="'Total Surface = ' + ${house.quarter} + 'm&lt;sup&gt;2&lt;/sup&gt;'">Total
+			Surface</li>
+	</ul>
+
+</body>
+</html>

@@ -5,8 +5,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.rojoherrero.rivendel.models.House;
-import org.rojoherrero.rivendel.models.HouseDao;
 import org.rojoherrero.rivendel.models.HouseSearchForm;
+import org.rojoherrero.rivendel.repositories.HouseDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,19 +40,19 @@ public class HouseSearchController extends WebMvcConfigurerAdapter {
 	@RequestMapping(value = "/house_search", method = RequestMethod.POST)
 	public String houseSearchValidation(@Valid HouseSearchForm searchForm, BindingResult bindingResult, Model model) {
 
-		List<House> housesList = null;
-
 		if (bindingResult.hasErrors()) {
 			return ("house_search_form");
 		}
 
-		if (searchForm.getHouseSurface() == null || searchForm.getGardenSurface() == null) {
-			housesList = houseDao.findByTown(searchForm.getTown());
-		}
+		System.out.println(searchForm.getTown());
+
+		List<House> housesList = houseDao.findHousesByTown(searchForm.getTown());
+
+		System.out.println(housesList.toString());
 
 		model.addAttribute("houses", housesList);
 
-		return ("");
+		return ("/houses_list");
 	}
 
 }

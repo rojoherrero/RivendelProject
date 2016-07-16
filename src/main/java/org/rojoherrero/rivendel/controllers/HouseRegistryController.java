@@ -6,8 +6,8 @@ import java.util.Date;
 import javax.validation.Valid;
 
 import org.rojoherrero.rivendel.models.House;
-import org.rojoherrero.rivendel.models.HouseDao;
 import org.rojoherrero.rivendel.models.HouseRegistrationForm;
+import org.rojoherrero.rivendel.repositories.HouseDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
