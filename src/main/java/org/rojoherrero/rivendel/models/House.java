@@ -1,5 +1,7 @@
 package org.rojoherrero.rivendel.models;
 
+import java.util.Calendar;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,6 +34,9 @@ public class House {
 	private Double gardenSurface;
 	@NotNull
 	private Double totalSurface;
+
+	@NotNull
+	private Calendar registrationDate;
 
 	public Long getId() {
 		return id;
@@ -113,11 +118,20 @@ public class House {
 		this.totalSurface = totalSurface;
 	}
 
+	public Calendar getRegistrationDate() {
+		return registrationDate;
+	}
+
+	public void setRegistrationDate(Calendar registrationDate) {
+		this.registrationDate = registrationDate;
+	}
+
 	public House() {
 	}
 
 	public House(String quarter, String streetName, Integer streetNumber, Integer zipCode, String town, String country,
-			Double houseSurface, Double gardenSurface, Double totalSurface) {
+			Double houseSurface, Double gardenSurface, Double totalSurface, Calendar registrationDate) {
+		super();
 		this.quarter = quarter;
 		this.streetName = streetName;
 		this.streetNumber = streetNumber;
@@ -127,16 +141,17 @@ public class House {
 		this.houseSurface = houseSurface;
 		this.gardenSurface = gardenSurface;
 		this.totalSurface = totalSurface;
+		this.registrationDate = registrationDate;
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("House [id=").append(id).append(", quarter=").append(quarter).append(", streetName=")
-				.append(streetName).append(", streetNumber=").append(streetNumber).append(", zipCode=").append(zipCode)
-				.append(", town=").append(town).append(", country=").append(country).append(", houseSurface=")
-				.append(houseSurface).append(", gardenSurface=").append(gardenSurface).append(", totalSurface=")
-				.append(totalSurface).append("]");
+		builder.append("House [quarter=").append(quarter).append(", streetName=").append(streetName)
+				.append(", streetNumber=").append(streetNumber).append(", zipCode=").append(zipCode).append(", town=")
+				.append(town).append(", country=").append(country).append(", houseSurface=").append(houseSurface)
+				.append(", gardenSurface=").append(gardenSurface).append(", totalSurface=").append(totalSurface)
+				.append(", registrationDate=").append(registrationDate).append("]");
 		return builder.toString();
 	}
 
