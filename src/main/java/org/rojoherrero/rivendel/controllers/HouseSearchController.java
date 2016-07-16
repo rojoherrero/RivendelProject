@@ -6,7 +6,7 @@ import javax.validation.Valid;
 
 import org.rojoherrero.rivendel.models.House;
 import org.rojoherrero.rivendel.models.HouseSearchForm;
-import org.rojoherrero.rivendel.repositories.HouseDao;
+import org.rojoherrero.rivendel.repositories.HouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +20,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class HouseSearchController extends WebMvcConfigurerAdapter {
 
 	@Autowired
-	private HouseDao houseDao;
+	private HouseRepository houseRepository;
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
@@ -30,7 +30,7 @@ public class HouseSearchController extends WebMvcConfigurerAdapter {
 	@RequestMapping(value = "/house_search", method = RequestMethod.GET)
 	public String houseSearch(HouseSearchForm searchForm, Model model) {
 
-		List<String> towns = houseDao.findTowns();
+		List<String> towns = houseRepository.findTowns();
 
 		model.addAttribute("towns", towns);
 
@@ -44,15 +44,20 @@ public class HouseSearchController extends WebMvcConfigurerAdapter {
 			return ("house_search_form");
 		}
 
-		System.out.println(searchForm.getTown());
+		try {
 
-		List<House> housesList = houseDao.findHousesByTown(searchForm.getTown());
+			List<House> housesList = houseRepository.findHousesByTown(searchForm.getTown());
+			model.addAttribute("town", searchForm.getTown());
+			model.addAttribute("houses", housesList);
+			return ("/houses_list");
 
-		System.out.println(housesList.toString());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			model.addAttribute("message", "Somethig went wrong. Please, try again");
+			return ("house_search_form");
 
-		model.addAttribute("houses", housesList);
-
-		return ("/houses_list");
+		}
 	}
 
 }
