@@ -19,11 +19,11 @@
 			th:utext="'Garden Surface = ' + ${house.gardenSurface} + ' m&lt;sup&gt;2&lt;/sup&gt;'">Garden
 			Surface</li>
 		<li
-			th:utext="'Total Surface = ' + ${house.quarter} + ' m&lt;sup&gt;2&lt;/sup&gt;'">Total
+			th:utext="'Total Surface = ' + ${house.totalSurface} + ' m&lt;sup&gt;2&lt;/sup&gt;'">Total
 			Surface</li>
 	</ul>
 	<a th:href="@{/index}">Main Page</a>
-	<a th:href="@{/house_search}">New House Search</a>
+	<a th:href="@{/house_search/search_form}">New House Search</a>
 	<a th:href="@{/house_registry/registration_from}">Register a new
 		House</a>
 </body>
