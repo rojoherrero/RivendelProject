@@ -1,16 +1,17 @@
 package org.rojoherrero.rivendel.repositories;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.rojoherrero.rivendel.models.House;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-public interface HouseDao extends CrudRepository<House, Long> {
+public interface HouseRepository extends CrudRepository<House, Long> {
 
 	List<House> findAll();
 
-	@Query("SELECT town FROM House h")
+	@Query("SELECT town FROM House h GROUP BY h.town")
 	List<String> findTowns();
 
 	@Query("SELECT houseSurface FROM House h")
@@ -18,7 +19,7 @@ public interface HouseDao extends CrudRepository<House, Long> {
 
 	List<House> findHousesByZipCode(Integer zipCode);
 
-	List<House> findHousesByTown(String town);
+	ArrayList<House> findHousesByTown(String town);
 
 	List<House> findHousesByHouseSurface(Double houseSurface);
 

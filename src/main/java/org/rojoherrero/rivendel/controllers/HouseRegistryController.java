@@ -7,7 +7,7 @@ import javax.validation.Valid;
 
 import org.rojoherrero.rivendel.models.House;
 import org.rojoherrero.rivendel.models.HouseRegistrationForm;
-import org.rojoherrero.rivendel.repositories.HouseDao;
+import org.rojoherrero.rivendel.repositories.HouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +27,7 @@ public class HouseRegistryController extends WebMvcConfigurerAdapter {
 	}
 
 	@Autowired
-	private HouseDao houseDao;
+	private HouseRepository houseRepository;
 
 	@RequestMapping(value = "/registration_from", method = RequestMethod.GET)
 	public String goToHouseRegistration(HouseRegistrationForm registrationForm) {
@@ -49,7 +49,7 @@ public class HouseRegistryController extends WebMvcConfigurerAdapter {
 				registrationForm.getStreetNumber(), registrationForm.getZipCode(), registrationForm.getTown(),
 				registrationForm.getCountry(), registrationForm.getHouseSurface(), registrationForm.getGardenSurface(),
 				registrationForm.getHouseSurface() + registrationForm.getGardenSurface(), Calendar.getInstance());
-		houseDao.save(house);
+		houseRepository.save(house);
 
 		return ("registration_result");
 	}

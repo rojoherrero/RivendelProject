@@ -5,7 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<p th:text="'Availables Houses in ' + ${town}"></p>
 	<ul th:each="house : ${houses}">
 		<li th:text="'Street name = ' + ${house.streetName}">Street</li>
 		<li th:text="'Street number = ' + ${house.streetNumber}">Number</li>
@@ -13,15 +13,18 @@
 		<li th:text="'Zip Code = ' + ${house.zipCode}">Zip code</li>
 		<li th:text="'Country = ' + ${house.country}">Country</li>
 		<li
-			th:utext="'House Surface = ' + ${house.houseSurface} + 'm&lt;sup&gt;2&lt;/sup&gt;'">House
+			th:utext="'House Surface = ' + ${house.houseSurface} + ' m&lt;sup&gt;2&lt;/sup&gt;'">House
 			Surface</li>
 		<li
-			th:utext="'Garden Surface = ' + ${house.gardenSurface} + 'm&lt;sup&gt;2&lt;/sup&gt;'">Garden
+			th:utext="'Garden Surface = ' + ${house.gardenSurface} + ' m&lt;sup&gt;2&lt;/sup&gt;'">Garden
 			Surface</li>
 		<li
-			th:utext="'Total Surface = ' + ${house.quarter} + 'm&lt;sup&gt;2&lt;/sup&gt;'">Total
+			th:utext="'Total Surface = ' + ${house.totalSurface} + ' m&lt;sup&gt;2&lt;/sup&gt;'">Total
 			Surface</li>
 	</ul>
-
+	<a th:href="@{/index}">Main Page</a>
+	<a th:href="@{/house_search/search_form}">New House Search</a>
+	<a th:href="@{/house_registry/registration_from}">Register a new
+		House</a>
 </body>
 </html>
