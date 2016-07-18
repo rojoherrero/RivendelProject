@@ -4,11 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class IndexController {
+@RequestMapping("/info_and_contact")
+public class AboutUsController {
 
-	@RequestMapping(value = { "/", "/index" })
-	public String goToIndex() {
-		return ("index");
+	@RequestMapping("/about_us")
+	public String aboutUsInfo() {
+		return ("infoAndContact/aboutus");
 	}
 
 }

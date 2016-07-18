@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -23,7 +22,7 @@ public class HouseSearchController {
 	@Autowired
 	private HouseRepository houseRepository;
 
-	// Class attributes to make availables these objects on the redirects.
+	// Class attributes to make available these objects on the redirects.
 	private String errorTrace;
 	private String town;
 	private ArrayList<House> houses;
@@ -35,7 +34,7 @@ public class HouseSearchController {
 
 		model.addAttribute("towns", towns);
 
-		return ("house_search_form");
+		return ("search/house_search_form");
 	}
 
 	@RequestMapping(value = "/send_search_form", method = RequestMethod.POST)
@@ -43,7 +42,7 @@ public class HouseSearchController {
 
 		// If the form has errors, return to the form
 		if (bindingResult.hasErrors()) {
-			return ("house_search_form");
+			return ("search/house_search_form");
 		}
 
 		try {
@@ -59,25 +58,27 @@ public class HouseSearchController {
 			e.printStackTrace();
 			errorTrace = e.toString();
 			// redirect to new URL
-			return ("rdirect:/search_error");
+			return ("redirect:/house_search/search_error");
 		}
 	}
 
 	@RequestMapping(value = "/search_result", method = RequestMethod.GET)
 	public String searchResutl(Model model) {
 
+		// send models to view
 		model.addAttribute("town", town);
 		model.addAttribute("houses", houses);
 
-		return ("houses_list");
+		return ("search/houses_list");
 	}
 
 	@RequestMapping(value = "/search_error", method = RequestMethod.GET)
 	public String searchError(Model model) {
 
+		// send the error trace to view
 		model.addAttribute("errorTrace", errorTrace);
 
-		return ("search_error");
+		return ("search/search_error");
 	}
 
 }

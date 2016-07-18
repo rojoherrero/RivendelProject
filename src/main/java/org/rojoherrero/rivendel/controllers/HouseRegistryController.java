@@ -21,17 +21,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @RequestMapping("/house_registry")
 public class HouseRegistryController extends WebMvcConfigurerAdapter {
 
-	@Override
-	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/house_registration_result").setViewName("house_registration_result");
-	}
-
 	@Autowired
 	private HouseRepository houseRepository;
 
 	@RequestMapping(value = "/registration_from", method = RequestMethod.GET)
 	public String goToHouseRegistration(HouseRegistrationForm registrationForm) {
-		return ("house_registration_form");
+		return ("registry/house_registration_form");
 	}
 
 	@RequestMapping(value = "/send_house_registration", method = RequestMethod.POST)
@@ -39,10 +34,9 @@ public class HouseRegistryController extends WebMvcConfigurerAdapter {
 			Model model) {
 
 		Calendar.getInstance();
-		
-		
+
 		if (bindingResult.hasErrors()) {
-			return ("house_registration_form");
+			return ("registry/house_registration_form");
 		}
 
 		House house = new House(registrationForm.getQuarter(), registrationForm.getStreetName(),
@@ -51,7 +45,7 @@ public class HouseRegistryController extends WebMvcConfigurerAdapter {
 				registrationForm.getHouseSurface() + registrationForm.getGardenSurface(), Calendar.getInstance());
 		houseRepository.save(house);
 
-		return ("registration_result");
+		return ("registry/registration_result");
 	}
 
 }
