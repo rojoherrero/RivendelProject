@@ -21,24 +21,41 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @RequestMapping("/house_registry")
 public class HouseRegistryController extends WebMvcConfigurerAdapter {
 
+	// Dependency injection of the house repo. I didn't invoke a new instance of
+	// the HouseRepository, Spring do it for me
 	@Autowired
 	private HouseRepository houseRepository;
 
+	/**
+	 * new form for house searching
+	 * 
+	 * @param registrationForm
+	 * @return the form view
+	 */
 	@RequestMapping(value = "/registration_from", method = RequestMethod.GET)
 	public String goToHouseRegistration(HouseRegistrationForm registrationForm) {
 		return ("registry/house_registration_form");
 	}
 
+	/**
+	 * retrieve the form data from the view
+	 * 
+	 * @param registrationForm
+	 * @param bindingResult
+	 * @param model
+	 * @return the form validation view
+	 * @author rojoherrero
+	 */
 	@RequestMapping(value = "/send_house_registration", method = RequestMethod.POST)
 	public String validateRegistrationForm(@Valid HouseRegistrationForm registrationForm, BindingResult bindingResult,
 			Model model) {
 
-		Calendar.getInstance();
-
+		// if something is wrong, return to the form
 		if (bindingResult.hasErrors()) {
 			return ("registry/house_registration_form");
 		}
 
+		// if everything is ok, save the new house
 		House house = new House(registrationForm.getQuarter(), registrationForm.getStreetName(),
 				registrationForm.getStreetNumber(), registrationForm.getZipCode(), registrationForm.getTown(),
 				registrationForm.getCountry(), registrationForm.getHouseSurface(), registrationForm.getGardenSurface(),

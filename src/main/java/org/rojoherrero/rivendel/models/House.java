@@ -9,6 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+/**
+ * House entity
+ * 
+ * @author rojoherrero
+ *
+ */
 @Entity
 @Table(name = "houses")
 public class House {

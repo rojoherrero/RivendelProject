@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/house_search")
 public class HouseSearchController {
 
+	// Dependency injection of the house repo. I didn't invoke a new instance of
+	// the HouseRepository, Spring do it for me
 	@Autowired
 	private HouseRepository houseRepository;
 
@@ -27,6 +29,14 @@ public class HouseSearchController {
 	private String town;
 	private ArrayList<House> houses;
 
+	/**
+	 * New form to search a house
+	 * 
+	 * @param searchForm
+	 * @param model
+	 * @return search form view
+	 * @author rojoherrero
+	 */
 	@RequestMapping(value = "/search_form", method = RequestMethod.GET)
 	public String houseSearch(HouseSearchForm searchForm, Model model) {
 
@@ -37,6 +47,15 @@ public class HouseSearchController {
 		return ("search/house_search_form");
 	}
 
+	/**
+	 * retrieve the form from the view
+	 * 
+	 * @param searchForm
+	 * @param bindingResult
+	 * @param model
+	 * @return form result view
+	 * @author rojoherrero
+	 */
 	@RequestMapping(value = "/send_search_form", method = RequestMethod.POST)
 	public String houseSearchValidation(@Valid HouseSearchForm searchForm, BindingResult bindingResult, Model model) {
 
@@ -53,7 +72,6 @@ public class HouseSearchController {
 			return ("redirect:/house_search/search_result");
 
 		} catch (Exception e) {
-
 			// if something goes wrong
 			e.printStackTrace();
 			errorTrace = e.toString();
@@ -62,6 +80,13 @@ public class HouseSearchController {
 		}
 	}
 
+	/**
+	 * if everything is ok, print out the retrieved houses
+	 * 
+	 * @param model
+	 * @return house list
+	 * @author rojoherrero
+	 */
 	@RequestMapping(value = "/search_result", method = RequestMethod.GET)
 	public String searchResutl(Model model) {
 
@@ -72,6 +97,13 @@ public class HouseSearchController {
 		return ("search/houses_list");
 	}
 
+	/**
+	 * if something went wrong, pring out the trace of the error
+	 * 
+	 * @param model
+	 * @return
+	 * @author rojoherrero
+	 */
 	@RequestMapping(value = "/search_error", method = RequestMethod.GET)
 	public String searchError(Model model) {
 

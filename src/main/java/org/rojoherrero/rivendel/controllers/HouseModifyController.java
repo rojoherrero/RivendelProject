@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/house_modify")
 public class HouseModifyController {
 
+	/**
+	 * 
+	 * @return
+	 * @author rojoherrero
+	 */
 	@RequestMapping(value = "/houses_to_modify", method = RequestMethod.GET)
 	public String modifyForm() {
 		return ("modify/house_modify_form");
