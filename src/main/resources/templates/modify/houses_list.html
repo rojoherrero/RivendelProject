@@ -16,7 +16,11 @@
 					Number</li>
 				<li th:text="'ZIP Code: ' + ${house.zipCode}">ZIP Code</li>
 				<li><a
-					th:href="@{/house_modify/house_to_modify/houseId/__${house.id}__}">Modify</a></li>
+					th:href="@{/house_modify/house_to_modify/houseId/__${house.id}__}">Modify
+						House</a></li>
+				<li><a
+					th:href="@{/house_modify/house_to_delete/houseId/__${house.id}__}">Delete
+						House</a></li>
 			</ul>
 		</dd>
 	</dl>
