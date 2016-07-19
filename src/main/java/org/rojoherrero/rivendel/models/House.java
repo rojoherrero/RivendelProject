@@ -45,7 +45,7 @@ public class House {
 	private Calendar registrationDate;
 
 	@NotNull
-	private Calendar modificationData;
+	private Calendar modificationDate;
 
 	public Long getId() {
 		return id;
@@ -135,19 +135,20 @@ public class House {
 		this.registrationDate = registrationDate;
 	}
 
-	public Calendar getModificationData() {
-		return modificationData;
+	public Calendar getModificationDate() {
+		return modificationDate;
 	}
 
-	public void setModificationData(Calendar modificationData) {
-		this.modificationData = modificationData;
+	public void setModificationDate(Calendar modificationDate) {
+		this.modificationDate = modificationDate;
 	}
 
 	public House() {
 	}
 
 	public House(String quarter, String streetName, Integer streetNumber, Integer zipCode, String town, String country,
-			Double houseSurface, Double gardenSurface, Double totalSurface, Calendar registrationDate) {
+			Double houseSurface, Double gardenSurface, Double totalSurface, Calendar registrationDate,
+			Calendar modificationDate) {
 		super();
 		this.quarter = quarter;
 		this.streetName = streetName;
@@ -159,6 +160,7 @@ public class House {
 		this.gardenSurface = gardenSurface;
 		this.totalSurface = totalSurface;
 		this.registrationDate = registrationDate;
+		this.modificationDate = modificationDate;
 	}
 
 	@Override
@@ -168,7 +170,8 @@ public class House {
 				.append(", streetNumber=").append(streetNumber).append(", zipCode=").append(zipCode).append(", town=")
 				.append(town).append(", country=").append(country).append(", houseSurface=").append(houseSurface)
 				.append(", gardenSurface=").append(gardenSurface).append(", totalSurface=").append(totalSurface)
-				.append(", registrationDate=").append(registrationDate).append("]");
+				.append(", registrationDate=").append(registrationDate).append(", modificationDate=")
+				.append(modificationDate).append("]");
 		return builder.toString();
 	}
 
