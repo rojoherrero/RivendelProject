@@ -44,6 +44,9 @@ public class House {
 	@NotNull
 	private Calendar registrationDate;
 
+	@NotNull
+	private Calendar modificationData;
+
 	public Long getId() {
 		return id;
 	}
@@ -130,6 +133,14 @@ public class House {
 
 	public void setRegistrationDate(Calendar registrationDate) {
 		this.registrationDate = registrationDate;
+	}
+
+	public Calendar getModificationData() {
+		return modificationData;
+	}
+
+	public void setModificationData(Calendar modificationData) {
+		this.modificationData = modificationData;
 	}
 
 	public House() {

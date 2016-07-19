@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 
 	/**
-	 * any request to / or /index are sent to index.html
+	 * any request to "/" or "/index" are sent to index.html
 	 * 
 	 * @return
 	 * @author rojoherrero
