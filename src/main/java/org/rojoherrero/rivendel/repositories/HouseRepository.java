@@ -85,7 +85,7 @@ public interface HouseRepository extends CrudRepository<House, Long> {
 	 * @return List<House>
 	 * @author rojoherrero
 	 */
-	ArrayList<House> findHousesByTown(String town);
+	List<House> findHousesByTown(String town);
 
 	/**
 	 * Retrieve all the houses with the HouseSurface houseSurface

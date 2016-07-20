@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
  * @author rojoherrero
  *
  */
-public class HouseRegistrationForm {
+public class NewHouseForm {
 
 	@NotNull
 	private String quarter;

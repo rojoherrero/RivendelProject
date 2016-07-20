@@ -6,7 +6,7 @@
 </head>
 <body>
 	<p th:text="'Availables Houses in ' + ${town}"></p>
-	<ul th:each="house : ${houses}">
+	<ul th:each="house : ${housesByTown}">
 		<li th:text="'Street name = ' + ${house.streetName}">Street</li>
 		<li th:text="'Street number = ' + ${house.streetNumber}">Number</li>
 		<li th:text="'Quarter = ' + ${house.quarter}">Quarter</li>
