@@ -9,6 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+/**
+ * House entity
+ * 
+ * @author rojoherrero
+ *
+ */
 @Entity
 @Table(name = "houses")
 public class House {
@@ -37,6 +43,9 @@ public class House {
 
 	@NotNull
 	private Calendar registrationDate;
+
+	@NotNull
+	private Calendar modificationDate;
 
 	public Long getId() {
 		return id;
@@ -126,11 +135,35 @@ public class House {
 		this.registrationDate = registrationDate;
 	}
 
+	public Calendar getModificationDate() {
+		return modificationDate;
+	}
+
+	public void setModificationDate(Calendar modificationDate) {
+		this.modificationDate = modificationDate;
+	}
+
 	public House() {
 	}
 
+	/**
+	 * 
+	 * @param quarter
+	 * @param streetName
+	 * @param streetNumber
+	 * @param zipCode
+	 * @param town
+	 * @param country
+	 * @param houseSurface
+	 * @param gardenSurface
+	 * @param totalSurface
+	 * @param registrationDate
+	 * @param modificationDate
+	 * @author rojoherrero
+	 */
 	public House(String quarter, String streetName, Integer streetNumber, Integer zipCode, String town, String country,
-			Double houseSurface, Double gardenSurface, Double totalSurface, Calendar registrationDate) {
+			Double houseSurface, Double gardenSurface, Double totalSurface, Calendar registrationDate,
+			Calendar modificationDate) {
 		super();
 		this.quarter = quarter;
 		this.streetName = streetName;
@@ -142,6 +175,7 @@ public class House {
 		this.gardenSurface = gardenSurface;
 		this.totalSurface = totalSurface;
 		this.registrationDate = registrationDate;
+		this.modificationDate = modificationDate;
 	}
 
 	@Override
@@ -151,8 +185,34 @@ public class House {
 				.append(", streetNumber=").append(streetNumber).append(", zipCode=").append(zipCode).append(", town=")
 				.append(town).append(", country=").append(country).append(", houseSurface=").append(houseSurface)
 				.append(", gardenSurface=").append(gardenSurface).append(", totalSurface=").append(totalSurface)
-				.append(", registrationDate=").append(registrationDate).append("]");
+				.append(", registrationDate=").append(registrationDate).append(", modificationDate=")
+				.append(modificationDate).append("]");
 		return builder.toString();
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		House other = (House) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 
 }

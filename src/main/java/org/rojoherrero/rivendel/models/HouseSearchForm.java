@@ -2,13 +2,19 @@ package org.rojoherrero.rivendel.models;
 
 import javax.validation.constraints.NotNull;
 
+/**
+ * House form entity for house search
+ * 
+ * @author rojoherrero
+ *
+ */
 public class HouseSearchForm {
 
 	@NotNull
 	private String town;
-	
+
 	private Double houseSurface;
-	
+
 	private Double gardenSurface;
 
 	public String getTown() {

@@ -2,7 +2,13 @@ package org.rojoherrero.rivendel.models;
 
 import javax.validation.constraints.NotNull;
 
-public class HouseRegistrationForm {
+/**
+ * House form entity for house registration
+ * 
+ * @author rojoherrero
+ *
+ */
+public class NewHouseForm {
 
 	@NotNull
 	private String quarter;

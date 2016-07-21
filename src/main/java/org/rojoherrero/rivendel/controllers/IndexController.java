@@ -1,16 +1,20 @@
 package org.rojoherrero.rivendel.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class IndexController extends WebMvcConfigurerAdapter {
+public class IndexController {
 
-	@Override
-	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/index").setViewName("index");
-		registry.addViewController("/").setViewName("index");
+	/**
+	 * any request to "/" or "/index" are sent to index.html
+	 * 
+	 * @return
+	 * @author rojoherrero
+	 */
+	@RequestMapping(value = { "/", "/index" })
+	public String goToIndex() {
+		return ("index");
 	}
 
 }

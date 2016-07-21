@@ -5,8 +5,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="#" th:action="@{/house_registry/send_house_registration}"
-		th:object="${houseRegistrationForm}" method="post">
+	<form action="#" th:action="@{/house/newHouse/form}"
+		th:object="${newHouseForm}" method="post">
 		<table>
 			<tr>
 				<td>Quarter:</td>
@@ -22,13 +22,13 @@
 			</tr>
 			<tr>
 				<td>Street Number:</td>
-				<td><input type="text" th:field="*{streetNumber}" /></td>
+				<td><input type="number" th:field="*{streetNumber}" /></td>
 				<td th:if="${#fields.hasErrors('streetNumber')}"
 					th:errors="*{streetNumber}">Street Name Error</td>
 			</tr>
 			<tr>
 				<td>ZIP Code:</td>
-				<td><input type="text" th:field="*{zipCode}" /></td>
+				<td><input type="number" th:field="*{zipCode}" /></td>
 				<td th:if="${#fields.hasErrors('zipCode')}" th:errors="*{zipCode}">Street
 					Name Error</td>
 			</tr>
@@ -39,7 +39,7 @@
 					Name Error</td>
 			</tr>
 			<tr>
-				<td>Cpuntry:</td>
+				<td>Country:</td>
 				<td><input type="text" th:field="*{country}" /></td>
 				<td th:if="${#fields.hasErrors('country')}" th:errors="*{country}">Street
 					Name Error</td>
@@ -47,14 +47,14 @@
 			<tr>
 				<td>House surface (m<sup>2</sup>):
 				</td>
-				<td><input type="text" th:field="*{houseSurface}" /></td>
+				<td><input type="number" th:field="*{houseSurface}" /></td>
 				<td th:if="${#fields.hasErrors('houseSurface')}"
 					th:errors="*{houseSurface}">Street Name Error</td>
 			</tr>
 			<tr>
 				<td>House surface (m<sup>2</sup>):
 				</td>
-				<td><input type="text" th:field="*{gardenSurface}" /></td>
+				<td><input type="number" th:field="*{gardenSurface}" /></td>
 				<td th:if="${#fields.hasErrors('gardenSurface')}"
 					th:errors="*{gardenSurface}">Street Name Error</td>
 			</tr>
