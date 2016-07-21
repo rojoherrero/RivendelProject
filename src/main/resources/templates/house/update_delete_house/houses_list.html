@@ -16,10 +16,10 @@
 					Number</li>
 				<li th:text="'ZIP Code: ' + ${house.zipCode}">ZIP Code</li>
 				<li><a
-					th:href="@{/house/houseUpdateDelete/update/houseId/{houseId}(houseId=${house.id})}">Update
+					th:href="@{/house/houseUpdateDelete/update(houseId=${house.id})}">Update
 						House</a></li>
 				<li><a
-					th:href="@{/house/houseUpdateDelete/delete/houseId/{houseId}(houseId=${house.id})}">Delete
+					th:href="@{/house/houseUpdateDelete/delete(houseId=${house.id})}">Delete
 						House</a></li>
 			</ul>
 		</dd>
