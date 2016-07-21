@@ -108,10 +108,10 @@ public class HouseController {
 		}
 
 		House house = houseRepo.findOne(houseId);
-		if (form.getQuarter() != null) {
+		if (!form.getQuarter().isEmpty()) {
 			house.setQuarter(form.getQuarter());
 		}
-		if (form.getStreetName() != null) {
+		if (!form.getStreetName().isEmpty()) {
 			house.setStreetName(form.getStreetName());
 		}
 		if (form.getStreetNumber() != null) {
@@ -120,16 +120,10 @@ public class HouseController {
 		if (form.getZipCode() != null) {
 			house.setZipCode(form.getZipCode());
 		}
-		if (form.getTown() != null) {
+		if (!form.getTown().isEmpty()) {
 			house.setTown(form.getTown());
 		}
-		if (form.getCountry() != null) {
-			house.setCountry(form.getCountry());
-		}
-		if (form.getCountry() != null) {
-			house.setCountry(form.getCountry());
-		}
-		if (form.getCountry() != null) {
+		if (!form.getCountry().isEmpty()) {
 			house.setCountry(form.getCountry());
 		}
 		if (form.getHouseSurface() != null) {
@@ -138,8 +132,15 @@ public class HouseController {
 		if (form.getGardenSurface() != null) {
 			house.setGardenSurface(form.getGardenSurface());
 		}
+
 		if (form.getHouseSurface() != null && form.getGardenSurface() != null) {
 			house.setTotalSurface(form.getHouseSurface() + form.getGardenSurface());
+		}
+		if (form.getHouseSurface() != null && form.getGardenSurface() == null) {
+			house.setTotalSurface(form.getHouseSurface());
+		}
+		if (form.getHouseSurface() == null && form.getGardenSurface() != null) {
+			house.setTotalSurface(form.getGardenSurface());
 		}
 
 		house.setModificationDate(Calendar.getInstance());
