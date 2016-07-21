@@ -92,43 +92,61 @@ public class HouseController {
 		return ("house/update_delete_house/houses_list");
 	}
 
-	@RequestMapping(value = "/houseUpdateDelete/update", method = RequestMethod.GET)
-	public String getUpdateForm(@RequestParam("houseId") Long houseId, UpdateHouseForm form, Model model) {
-		House houseToUpdate = houseRepo.findOne(houseId);
-		model.addAttribute("houseToUpdate", houseToUpdate);
+	@RequestMapping(value = "/houseUpdateDelete/updateform", method = RequestMethod.GET)
+	public String getUpdateForm(@RequestParam("houseId") Long _houseId, UpdateHouseForm form, Model model) {
+		Long houseId = houseRepo.findOne(_houseId).getId();
+		model.addAttribute("houseId", houseId);
 		return ("house/update_delete_house/update_form");
 	}
 
-	@RequestMapping(value = "/houseUpdateDelete/update", method = RequestMethod.POST)
+	@RequestMapping(value = "/houseUpdateDelete/updateform/update", method = RequestMethod.POST)
 	public String postUpdateForm(@RequestParam("houseId") Long houseId, @Valid UpdateHouseForm form,
 			BindingResult result, Model model) {
-
-		Long id = houseRepo.findOne(houseId).getId();
-		model.addAttribute("houseId", id);
-
-		System.out.println(form.getStreetName());
-		System.out.println(houseId);
 
 		if (result.hasErrors()) {
 			return ("house/update_delete_house/update_form");
 		}
 
-		// House updatedHouse = new House();
-		// updatedHouse.setQuarter(form.getQuarter());
-		// updatedHouse.setStreetName(form.getStreetName());
-		// updatedHouse.setStreetNumber(form.getStreetNumber());
-		// updatedHouse.setZipCode(form.getZipCode());
-		// updatedHouse.setTown(form.getTown());
-		// updatedHouse.setCountry(form.getCountry());
-		// updatedHouse.setHouseSurface(form.getHouseSurface());
-		// updatedHouse.setGardenSurface(form.getGardenSurface());
-		// updatedHouse.setTotalSurface(form.getHouseSurface() +
-		// form.getGardenSurface());
-		// updatedHouse.setModificationDate(Calendar.getInstance());
-		// updatedHouse.setId(houseId);
+		House house = houseRepo.findOne(houseId);
+		if (form.getQuarter() != null) {
+			house.setQuarter(form.getQuarter());
+		}
+		if (form.getStreetName() != null) {
+			house.setStreetName(form.getStreetName());
+		}
+		if (form.getStreetNumber() != null) {
+			house.setStreetNumber(form.getStreetNumber());
+		}
+		if (form.getZipCode() != null) {
+			house.setZipCode(form.getZipCode());
+		}
+		if (form.getTown() != null) {
+			house.setTown(form.getTown());
+		}
+		if (form.getCountry() != null) {
+			house.setCountry(form.getCountry());
+		}
+		if (form.getCountry() != null) {
+			house.setCountry(form.getCountry());
+		}
+		if (form.getCountry() != null) {
+			house.setCountry(form.getCountry());
+		}
+		if (form.getHouseSurface() != null) {
+			house.setHouseSurface(form.getHouseSurface());
+		}
+		if (form.getGardenSurface() != null) {
+			house.setGardenSurface(form.getGardenSurface());
+		}
+		if (form.getHouseSurface() != null && form.getGardenSurface() != null) {
+			house.setTotalSurface(form.getHouseSurface() + form.getGardenSurface());
+		}
 
-		// System.out.println("ID from path variable: " + houseId);
-		// System.out.println("Updated House ID: " + updatedHouse.getId());
+		house.setModificationDate(Calendar.getInstance());
+
+		houseRepo.save(house);
+
+		model.addAttribute("houseId", houseId);
 
 		return ("house/update_delete_house/update_successful");
 	}

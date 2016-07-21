@@ -6,74 +6,62 @@
 </head>
 <body>
 	<form action="#"
-		th:action="@{/house/houseUpdateDelete/update/houseId/{houseId}(houseId=${houseToUpdate.id})}"
+		th:action="@{/house/houseUpdateDelete/updateform/update(houseId=${houseId})}"
 		th:object="${updateHouseForm}" method="post">
 		<table>
 			<thead>
 				<tr>
 					<th>Field</th>
-					<th>Values</th>
+					<th>New Values</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td>Street Name:</td>
-					<td><input type="text"
-						th:placeholder="${houseToUpdate.streetName}"
-						th:field="*{streetName}" /></td>
+					<td><input type="text" th:field="*{streetName}" /></td>
 					<td th:if="${#fields.hasErrors('streetName')}"
 						th:errors="*{streetName}">Street Name Error</td>
 				</tr>
 				<tr>
 					<td>Street Number:</td>
-					<td><input type="number"
-						th:placeholder="${houseToUpdate.streetNumber}"
-						th:field="*{streetNumber}" /></td>
+					<td><input type="number" th:field="*{streetNumber}" /></td>
 					<td th:if="${#fields.hasErrors('streetNumber')}"
 						th:errors="*{streetNumber}">Street Name Error</td>
 				</tr>
 				<tr>
 					<td>Quarter:</td>
-					<td><input type="text"
-						th:placeholder="${houseToUpdate.quarter}" th:field="*{quarter}" /></td>
+					<td><input type="text" th:field="*{quarter}" /></td>
 					<td th:if="${#fields.hasErrors('quarter')}" th:errors="*{quarter}">Street
 						Name Error</td>
 				</tr>
 				<tr>
 					<td>Town:</td>
-					<td><input type="text" th:placeholder="${houseToUpdate.town}"
-						th:field="*{town}" /></td>
+					<td><input type="text" th:field="*{town}" /></td>
 					<td th:if="${#fields.hasErrors('town')}" th:errors="*{town}">Street
 						Name Error</td>
 				</tr>
 				<tr>
 					<td>ZIP Code:</td>
-					<td><input type="number"
-						th:placeholder="${houseToUpdate.zipCode}" th:field="*{zipCode}" /></td>
+					<td><input type="number" th:field="*{zipCode}" /></td>
 					<td th:if="${#fields.hasErrors('zipCode')}" th:errors="*{zipCode}">Street
 						Name Error</td>
 				</tr>
 				<tr>
 					<td>Country:</td>
-					<td><input type="text"
-						th:placeholder="${houseToUpdate.country}" th:field="*{country}" /></td>
+					<td><input type="text" th:field="*{country}" /></td>
 					<td th:if="${#fields.hasErrors('country')}" th:errors="*{country}">Street
 						Name Error</td>
 				</tr>
 				<tr>
 					<td>House Surface (m<sup>2</sup>)
 					</td>
-					<td><input type="number"
-						th:placeholder="${houseToUpdate.houseSurface}"
-						th:field="*{houseSurface}" /></td>
+					<td><input type="number" th:field="*{houseSurface}" /></td>
 					<td th:if="${#fields.hasErrors('houseSurface')}"
 						th:errors="*{houseSurface}">Street Name Error</td>
 				</tr>
 				<tr>
 					<td>Garden Surface:</td>
-					<td><input type="number"
-						th:placeholder="${houseToUpdate.gardenSurface}"
-						th:field="*{gardenSurface}" /></td>
+					<td><input type="number" th:field="*{gardenSurface}" /></td>
 					<td th:if="${#fields.hasErrors('gardenSurface')}"
 						th:errors="*{gardenSurface}">Street Name Error</td>
 				</tr>

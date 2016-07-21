@@ -5,22 +5,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table>
-		<thead>
-			<tr>
-				<th>Field</th>
-				<th>Before Value</th>
-				<th>After Value</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Quarter</td>
-				<td th:text="${houseBefore.quarter}"></td>
-				<td th:text="${houseAfter.quarter}"></td>
-			</tr>
-		</tbody>
-	</table>
+	<h1>Works</h1>
+	<h2 th:text="${houseId}">House ID</h2>
 	<a th:href="@{/index}">Main Page</a>
 </body>
 </html>

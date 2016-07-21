@@ -6,23 +6,14 @@ import javax.validation.constraints.NotNull;
 
 public class UpdateHouseForm {
 
-	@NotNull
 	private String quarter;
-	@NotNull
 	private String streetName;
-	@NotNull
 	private Integer streetNumber;
-	@NotNull
 	private Integer zipCode;
-	@NotNull
 	private String town;
-	@NotNull
 	private String country;
-	@NotNull
 	private Double houseSurface;
-
 	private Double gardenSurface;
-	@NotNull
 	private Calendar modificationDate;
 
 	public String getQuarter() {
