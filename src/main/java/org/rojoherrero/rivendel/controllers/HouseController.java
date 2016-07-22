@@ -1,15 +1,14 @@
 package org.rojoherrero.rivendel.controllers;
 
-import java.util.Calendar;
 import java.util.List;
 
 import javax.validation.Valid;
 
-import org.rojoherrero.rivendel.models.House;
-import org.rojoherrero.rivendel.models.HouseSearchForm;
-import org.rojoherrero.rivendel.models.UpdateHouseForm;
-import org.rojoherrero.rivendel.models.NewHouseForm;
-import org.rojoherrero.rivendel.repositories.HouseRepository;
+import org.rojoherrero.rivendel.models.entities.House;
+import org.rojoherrero.rivendel.models.forms.HouseSearchForm;
+import org.rojoherrero.rivendel.models.forms.NewHouseForm;
+import org.rojoherrero.rivendel.models.forms.UpdateHouseForm;
+import org.rojoherrero.rivendel.services.HouseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class HouseController {
 
 	@Autowired
-	private HouseRepository houseRepo;
+	private HouseServiceImpl houseService;
 
 	/* Add a new House to the Data Base */
 
@@ -40,18 +39,14 @@ public class HouseController {
 			return ("house/new_house/newHouseForm");
 		}
 
-		House house = new House(form.getQuarter(), form.getStreetName(), form.getStreetNumber(), form.getZipCode(),
-				form.getTown(), form.getCountry(), form.getHouseSurface(), form.getGardenSurface(),
-				form.getHouseSurface() + form.getGardenSurface(), Calendar.getInstance(), Calendar.getInstance());
+		Long houseId = houseService.addHouse(form);
 
-		houseRepo.save(house);
-
-		return ("redirect:/house/newHouse/success/houseId/" + house.getId());
+		return ("redirect:/house/newHouse/success/houseId/" + houseId);
 	}
 
 	@RequestMapping(value = "/newHouse/success/houseId/{houseId}", method = RequestMethod.GET)
 	public String successNewHouse(@PathVariable("houseId") Long houseId, Model model) {
-		House house = houseRepo.findOne(houseId);
+		House house = houseService.retrieveHouseById(houseId);
 		model.addAttribute("newHouse", house);
 		return ("house/new_house/registration_result");
 	}
@@ -60,7 +55,7 @@ public class HouseController {
 
 	@RequestMapping(value = "/houseSearch/searchFrom", method = RequestMethod.GET)
 	public String getHouseSearchForm(HouseSearchForm form, Model model) {
-		List<String> townsList = houseRepo.findTowns();
+		List<String> townsList = houseService.retrieveTownNames();
 		model.addAttribute("towns", townsList);
 		return ("house/search_house/house_search_form");
 	}
@@ -76,8 +71,7 @@ public class HouseController {
 
 	@RequestMapping(value = "/houseSearch/searchForm/result/town/{town}", method = RequestMethod.GET)
 	public String searchResutl(@PathVariable("town") String town, Model model) {
-
-		List<House> housesByTown = houseRepo.findHousesByTown(town);
+		List<House> housesByTown = houseService.retrieveHousesByTown(town);
 		model.addAttribute("housesByTown", housesByTown);
 		model.addAttribute("townName", town);
 		return ("house/search_house/houses_list");
@@ -87,14 +81,13 @@ public class HouseController {
 
 	@RequestMapping(value = "/houseUpdateDelete", method = RequestMethod.GET)
 	public String getHouseList(Model model) {
-		List<House> allHouses = houseRepo.findAll();
+		List<House> allHouses = houseService.retrieveAllHouses();
 		model.addAttribute("houses", allHouses);
 		return ("house/update_delete_house/houses_list");
 	}
 
 	@RequestMapping(value = "/houseUpdateDelete/updateform", method = RequestMethod.GET)
-	public String getUpdateForm(@RequestParam("houseId") Long _houseId, UpdateHouseForm form, Model model) {
-		Long houseId = houseRepo.findOne(_houseId).getId();
+	public String getUpdateForm(@RequestParam("houseId") Long houseId, UpdateHouseForm form, Model model) {
 		model.addAttribute("houseId", houseId);
 		return ("house/update_delete_house/update_form");
 	}
@@ -107,45 +100,7 @@ public class HouseController {
 			return ("house/update_delete_house/update_form");
 		}
 
-		House house = houseRepo.findOne(houseId);
-		if (!form.getQuarter().isEmpty()) {
-			house.setQuarter(form.getQuarter());
-		}
-		if (!form.getStreetName().isEmpty()) {
-			house.setStreetName(form.getStreetName());
-		}
-		if (form.getStreetNumber() != null) {
-			house.setStreetNumber(form.getStreetNumber());
-		}
-		if (form.getZipCode() != null) {
-			house.setZipCode(form.getZipCode());
-		}
-		if (!form.getTown().isEmpty()) {
-			house.setTown(form.getTown());
-		}
-		if (!form.getCountry().isEmpty()) {
-			house.setCountry(form.getCountry());
-		}
-		if (form.getHouseSurface() != null) {
-			house.setHouseSurface(form.getHouseSurface());
-		}
-		if (form.getGardenSurface() != null) {
-			house.setGardenSurface(form.getGardenSurface());
-		}
-
-		if (form.getHouseSurface() != null && form.getGardenSurface() != null) {
-			house.setTotalSurface(form.getHouseSurface() + form.getGardenSurface());
-		}
-		if (form.getHouseSurface() != null && form.getGardenSurface() == null) {
-			house.setTotalSurface(form.getHouseSurface());
-		}
-		if (form.getHouseSurface() == null && form.getGardenSurface() != null) {
-			house.setTotalSurface(form.getGardenSurface());
-		}
-
-		house.setModificationDate(Calendar.getInstance());
-
-		houseRepo.save(house);
+		houseService.updateHouse(houseId, form);
 
 		model.addAttribute("houseId", houseId);
 
@@ -154,7 +109,7 @@ public class HouseController {
 
 	@RequestMapping(value = "/houseUpdateDelete/delete")
 	public String deleteHouse(@RequestParam("houseId") Long houseId) {
-		houseRepo.delete(houseId);
+		houseService.deleteHouse(houseId);
 		return ("house/update_delete_house/delete_success");
 	}
 

@@ -1,4 +1,4 @@
-package org.rojoherrero.rivendel.models;
+package org.rojoherrero.rivendel.models.entities;
 
 import java.util.Calendar;
 

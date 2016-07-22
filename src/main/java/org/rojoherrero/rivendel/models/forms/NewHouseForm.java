@@ -1,20 +1,31 @@
-package org.rojoherrero.rivendel.models;
-
-import java.util.Calendar;
+package org.rojoherrero.rivendel.models.forms;
 
 import javax.validation.constraints.NotNull;
 
-public class UpdateHouseForm {
+/**
+ * House form entity for house registration
+ * 
+ * @author rojoherrero
+ *
+ */
+public class NewHouseForm {
 
+	@NotNull
 	private String quarter;
+	@NotNull
 	private String streetName;
+	@NotNull
 	private Integer streetNumber;
+	@NotNull
 	private Integer zipCode;
+	@NotNull
 	private String town;
+	@NotNull
 	private String country;
+	@NotNull
 	private Double houseSurface;
+	@NotNull
 	private Double gardenSurface;
-	private Calendar modificationDate;
 
 	public String getQuarter() {
 		return quarter;
@@ -78,14 +89,6 @@ public class UpdateHouseForm {
 
 	public void setGardenSurface(Double gardenSurface) {
 		this.gardenSurface = gardenSurface;
-	}
-
-	public Calendar getModificationData() {
-		return modificationDate;
-	}
-
-	public void setModificationData(Calendar modificationData) {
-		this.modificationDate = modificationData;
 	}
 
 }
