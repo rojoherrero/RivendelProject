@@ -8,7 +8,9 @@ import org.rojoherrero.rivendel.models.forms.NewHouseForm;
 import org.rojoherrero.rivendel.models.forms.UpdateHouseForm;
 import org.rojoherrero.rivendel.repositories.HouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class HouseServiceImpl implements HouseService {
 
 	@Autowired
