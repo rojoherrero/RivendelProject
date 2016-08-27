@@ -2,6 +2,7 @@ package org.rojoherrero.rivendel.models.entities;
 
 import java.util.Calendar;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,30 +22,40 @@ public class House {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", nullable = false, updatable = false)
 	private Long id;
-	@NotNull
+
+	@Column(name = "quarter", nullable = false)
 	private String quarter;
-	@NotNull
+
+	@Column(name = "street_name", nullable = false)
 	private String streetName;
-	@NotNull
+
+	@Column(name = "street_number", nullable = false)
 	private Integer streetNumber;
-	@NotNull
+
+	@Column(name = "zip_code", nullable = false)
 	private Integer zipCode;
-	@NotNull
+
+	@Column(name = "town", nullable = false)
 	private String town;
-	@NotNull
+
+	@Column(name = "country", nullable = false)
 	private String country;
-	@NotNull
+
+	@Column(name = "house_surface", nullable = false)
 	private Double houseSurface;
 
+	@Column(name = "garden_surface", nullable = true)
 	private Double gardenSurface;
-	@NotNull
+
+	@Column(name = "total_surface", nullable = false)
 	private Double totalSurface;
 
-	@NotNull
+	@Column(name = "registration_date", nullable = false)
 	private Calendar registrationDate;
 
-	@NotNull
+	@Column(name = "modification_date", nullable = false)
 	private Calendar modificationDate;
 
 	public Long getId() {

@@ -13,8 +13,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class HouseServiceImpl implements HouseService {
 
+	private final HouseRepository houseRepo;
+	
 	@Autowired
-	private HouseRepository houseRepo;
+	public HouseServiceImpl(HouseRepository houseRepo) {
+		this.houseRepo = houseRepo;
+	}
 
 	public Long addHouse(NewHouseForm newHouseForm) {
 
