@@ -1,4 +1,4 @@
-package org.rojoherrero.rivendel.models.forms;
+package org.rojoherrero.rivendel.models.DTO;
 
 import javax.validation.constraints.NotNull;
 
@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
  * @author rojoherrero
  *
  */
-public class NewHouseForm {
+public class NewHouseDTO {
 
 	@NotNull
 	private String quarter;

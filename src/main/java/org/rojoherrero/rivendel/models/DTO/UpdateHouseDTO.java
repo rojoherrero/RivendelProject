@@ -1,10 +1,10 @@
-package org.rojoherrero.rivendel.models.forms;
+package org.rojoherrero.rivendel.models.DTO;
 
 import java.util.Calendar;
 
 import javax.validation.constraints.NotNull;
 
-public class UpdateHouseForm {
+public class UpdateHouseDTO {
 
 	private String quarter;
 	private String streetName;
