@@ -3,10 +3,10 @@ package org.rojoherrero.rivendel.services;
 import java.util.Calendar;
 import java.util.List;
 
+import org.rojoherrero.rivendel.models.DTO.NewHouseDTO;
+import org.rojoherrero.rivendel.models.DTO.UpdateHouseDTO;
 import org.rojoherrero.rivendel.models.entities.House;
-import org.rojoherrero.rivendel.models.forms.NewHouseForm;
-import org.rojoherrero.rivendel.models.forms.UpdateHouseForm;
-import org.rojoherrero.rivendel.repositories.HouseRepository;
+import org.rojoherrero.rivendel.models.repositories.HouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +20,7 @@ public class HouseServiceImpl implements HouseService {
 		this.houseRepo = houseRepo;
 	}
 
-	public Long addHouse(NewHouseForm newHouseForm) {
+	public Long addHouse(NewHouseDTO newHouseForm) {
 
 		House house = new House(newHouseForm.getQuarter(), newHouseForm.getStreetName(), newHouseForm.getStreetNumber(),
 				newHouseForm.getZipCode(), newHouseForm.getTown(), newHouseForm.getCountry(),
@@ -33,7 +33,7 @@ public class HouseServiceImpl implements HouseService {
 		return (house.getId());
 	}
 
-	public void updateHouse(Long houseId, UpdateHouseForm updateHouseForm) {
+	public void updateHouse(Long houseId, UpdateHouseDTO updateHouseForm) {
 
 		House house = houseRepo.findOne(houseId);
 		if (!updateHouseForm.getQuarter().isEmpty()) {

@@ -1,4 +1,4 @@
-package org.rojoherrero.rivendel.repositories;
+package org.rojoherrero.rivendel.models.repositories;
 
 import java.util.List;
 import java.util.Map;
