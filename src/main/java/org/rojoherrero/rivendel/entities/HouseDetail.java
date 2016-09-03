@@ -21,7 +21,7 @@ public class HouseDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "house_detail_id")
-	private long id;
+	private Long id;
 
 	@Getter
 	@Setter
@@ -31,35 +31,35 @@ public class HouseDetail {
 	@Getter
 	@Setter
 	@Column(name = "surface_total")
-	private double surfaceTotal;
+	private Double surfaceTotal;
 
 	@Getter
 	@Setter
 	@Column(name = "surface_garden")
-	private double surfaceGarden;
+	private Double surfaceGarden;
 
 	@Getter
 	@Setter
 	@Column(name = "sruface_build")
-	private double surfaceBuild;
+	private Double surfaceBuild;
 
 	@Getter
 	@Setter
 	@Column(name = "surface_garage")
-	private double surfaceGarage;
+	private Double surfaceGarage;
 
 	@Getter
 	@Setter
 	@Column(name = "total_rooms_number")
-	private int rooms;
+	private Integer rooms;
 
 	@Getter
 	@Setter
 	@Column(name = "bedrooms_number")
-	private int bedRooms;
+	private Integer bedRooms;
 
 	@Getter
 	@Setter
 	@Column(name = "restrooms_number")
-	private int restRooms;
+	private Integer restRooms;
 }

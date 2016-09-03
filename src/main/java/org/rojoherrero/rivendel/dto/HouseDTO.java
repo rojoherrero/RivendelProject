@@ -17,18 +17,18 @@ public class HouseDTO {
 
 	private String country;
 
-	private double surfaceTotal;
+	private Double surfaceTotal;
 
-	private double surfaceGarden;
+	private Double surfaceGarden;
 
-	private double surfaceBuild;
+	private Double surfaceBuild;
 
-	private double surfaceGarage;
+	private Double surfaceGarage;
 
-	private int rooms;
+	private Integer rooms;
 
-	private int bedRooms;
+	private Integer bedRooms;
 
-	private int restRooms;
+	private Integer restRooms;
 
 }

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Update Form</h1>
+	<div>
+		<form action="#"
+			th:action="@{/house/{house_id}/update(house_id=${#httpServletRequest.getParameter('house_id')})}"
+			th:object="${newHouseValues}" method="post">
+			<table>
+				<thead>
+					<tr>
+						<th>Field</th>
+						<th>New Value</th>
+						<th th:if="${#fields.hasErrors()}">Error</th>
+						<th>Old Value</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Street Name</td>
+						<td><input type="text" th:field="*{streetName}"
+							name="streetName" /></td>
+						<td th:if="${#fields.hasErrors('streetName')}"
+							th:errors="*{streetName}">Street Name Error</td>
+						<td th:inline="text">[[${oldHouseValues.streetName}]]</td>
+					</tr>
+					<tr>
+						<td>Street Number</td>
+						<td><input type="number" th:field="*{streetNumber}"
+							name="streetNumber" /></td>
+						<td th:if="${#fields.hasErrors('streetNumber')}"
+							th:errors="*{streetNumber}">Street Number Error</td>
+						<td th:inline="text">[[${oldHouseValues.streetNumber}]]</td>
+					</tr>
+					<tr>
+						<td>Town Name</td>
+						<td><input type="text" th:field="*{town}" name="town" /></td>
+						<td th:if="${#fields.hasErrors('town')}" th:errors="*{town}">Street
+							Number Error</td>
+						<td th:inline="text">[[${oldHouseValues.town}]]</td>
+					</tr>
+					<tr>
+						<td>Country Name</td>
+						<td><input type="text" th:field="*{country}" name="country" /></td>
+						<td th:if="${#fields.hasErrors('country')}" th:errors="*{country}">Street
+							Number Error</td>
+						<td th:inline="text">[[${oldHouseValues.country}]]</td>
+					</tr>
+					<tr>
+						<td>Total Surface</td>
+						<td><input type="number" step="0.1"
+							th:field="*{surfaceTotal}" name="surfaceTotal" /></td>
+						<td th:if="${#fields.hasErrors('surfaceTotal')}"
+							th:errors="*{country}">Street Number Error</td>
+						<td th:inline="text">[[${oldHouseValues.surfaceTotal}]]</td>
+					</tr>
+					<tr>
+						<td>Garden Surface</td>
+						<td><input type="number" step="0.1"
+							th:field="*{surfaceGarden}" name="surfaceGarden" /></td>
+						<td th:if="${#fields.hasErrors('surfaceGarden')}"
+							th:errors="*{surfaceGarden}">Street Number Error</td>
+						<td th:inline="text">[[${oldHouseValues.surfaceGarden}]]</td>
+					</tr>
+					<tr>
+						<td>Build Surface</td>
+						<td><input type="number" step="0.1"
+							th:field="*{surfaceBuild}" name="surfaceBuild" /></td>
+						<td th:if="${#fields.hasErrors('surfaceBuild')}"
+							th:errors="*{surfaceBuild}">Street Number Error</td>
+						<td th:inline="text">[[${oldHouseValues.surfaceBuild}]]</td>
+					</tr>
+					<tr>
+						<td>Garage Surface</td>
+						<td><input type="number" step="0.1"
+							th:field="*{surfaceGarage}" name="surfaceGarage" /></td>
+						<td th:if="${#fields.hasErrors('surfaceGarage')}"
+							th:errors="*{surfaceGarage}">Street Number Error</td>
+						<td th:inline="text">[[${oldHouseValues.surfaceGarage}]]</td>
+					</tr>
+					<tr>
+						<td>Number of Rooms</td>
+						<td><input type="number" th:field="*{rooms}" name="rooms" /></td>
+						<td th:if="${#fields.hasErrors('rooms')}" th:errors="*{rooms}">Street
+							Number Error</td>
+						<td th:inline="text">[[${oldHouseValues.rooms}]]</td>
+					</tr>
+					<tr>
+						<td>Number of Rooms</td>
+						<td><input type="number" th:field="*{bedRooms}"
+							name="bedRooms" /></td>
+						<td th:if="${#fields.hasErrors('bedRooms')}"
+							th:errors="*{bedRooms}">Street Number Error</td>
+						<td th:inline="text">[[${oldHouseValues.bedRooms}]]</td>
+					</tr>
+					<tr>
+						<td>Number of Rooms</td>
+						<td><input type="number" th:field="*{restRooms}"
+							name="restRooms" /></td>
+						<td th:if="${#fields.hasErrors('restRooms')}"
+							th:errors="*{restRooms}">Street Number Error</td>
+						<td th:inline="text">[[${oldHouseValues.restRooms}]]</td>
+					</tr>
+					<tr>
+						<td colspan="4"><button type="submit">Register your
+								House</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
