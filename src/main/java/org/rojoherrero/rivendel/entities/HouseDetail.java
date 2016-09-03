@@ -8,107 +8,58 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor
 @Entity
 @Table(name = "house_detail")
 public class HouseDetail {
 
+	@Getter
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "house_detail_id")
 	private long id;
 
+	@Getter
+	@Setter
 	@OneToOne(mappedBy = "houseDetail")
 	private House house;
 
+	@Getter
+	@Setter
 	@Column(name = "surface_total")
 	private double surfaceTotal;
 
+	@Getter
+	@Setter
 	@Column(name = "surface_garden")
 	private double surfaceGarden;
 
+	@Getter
+	@Setter
 	@Column(name = "sruface_build")
 	private double surfaceBuild;
 
+	@Getter
+	@Setter
 	@Column(name = "surface_garage")
 	private double surfaceGarage;
 
+	@Getter
+	@Setter
 	@Column(name = "total_rooms_number")
 	private int rooms;
 
+	@Getter
+	@Setter
 	@Column(name = "bedrooms_number")
 	private int bedRooms;
 
+	@Getter
+	@Setter
 	@Column(name = "restrooms_number")
 	private int restRooms;
-
-	public House getHouse() {
-		return house;
-	}
-
-	public void setHouse(House house) {
-		this.house = house;
-	}
-
-	public double getSurfaceTotal() {
-		return surfaceTotal;
-	}
-
-	public void setSurfaceTotal(double surfaceTotal) {
-		this.surfaceTotal = surfaceTotal;
-	}
-
-	public double getSurfaceGarden() {
-		return surfaceGarden;
-	}
-
-	public void setSurfaceGarden(double surfaceGarden) {
-		this.surfaceGarden = surfaceGarden;
-	}
-
-	public double getSurfaceBuild() {
-		return surfaceBuild;
-	}
-
-	public void setSurfaceBuild(double surfaceBuild) {
-		this.surfaceBuild = surfaceBuild;
-	}
-
-	public double getSurfaceGarage() {
-		return surfaceGarage;
-	}
-
-	public void setSurfaceGarage(double surfaceGarage) {
-		this.surfaceGarage = surfaceGarage;
-	}
-
-	public int getRooms() {
-		return rooms;
-	}
-
-	public void setRooms(int rooms) {
-		this.rooms = rooms;
-	}
-
-	public int getBedRooms() {
-		return bedRooms;
-	}
-
-	public void setBedRooms(int bedRooms) {
-		this.bedRooms = bedRooms;
-	}
-
-	public int getRestRooms() {
-		return restRooms;
-	}
-
-	public void setRestRooms(int restRooms) {
-		this.restRooms = restRooms;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public HouseDetail() {
-	}
 }

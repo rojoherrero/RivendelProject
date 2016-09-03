@@ -9,16 +9,10 @@
 	<header class="page-header">
 		<h1>Welcome to the Rivendel Real State Agency</h1>
 	</header>
-	<nav class="navigation-bar">
-		<ul>
-			<li><a th:href="@{/house/houseSearch/searchFrom}">Search for
-					Available Houses</a></li>
-			<li><a th:href="@{/house/newHouse/form}">Register your House</a></li>
-			<li><a th:href="@{/house/houseUpdateDelete}">Modify/Delete
-					Houses</a></li>
-			<li><a th:href="@{/info_and_contact/about_us}">About Us</a></li>
-			<li><a th:href="@{/info_and_contact/contact_us}">Contact Us</a></li>
-		</ul>
-	</nav>
+	<div>
+		<p>
+			<a th:href="@{/house/new_house}">New House Form</a>
+		</p>
+	</div>
 </body>
 </html>
