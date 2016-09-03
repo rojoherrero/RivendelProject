@@ -38,4 +38,9 @@ public class HouseServiceImpl implements HouseServices {
 		houseRepo.save(house);
 	}
 
+	@Override
+	public Iterable<House> retrieveAllHouses() {
+		return houseRepo.findAll();
+	}
+
 }

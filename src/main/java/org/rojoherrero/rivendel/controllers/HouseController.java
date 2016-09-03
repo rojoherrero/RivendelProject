@@ -38,6 +38,11 @@ public class HouseController {
 			return "house/new_house";
 		}
 
-		return "house/success";
+		return "index";
+	}
+
+	@RequestMapping(value = "/house/get_all_houses", method = RequestMethod.GET)
+	public ModelAndView getAllHouses() {
+		return new ModelAndView("house/all_houses", "allHouses", houseServices.retrieveAllHouses());
 	}
 }
