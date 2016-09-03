@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>Street Name</th>
+				<th>Street Number</th>
+				<th>Town</th>
+				<th>Country</th>
+				<th>House ID</th>
+				<th>House ID</th>
+				<th>Total Surface</th>
+				<th>Garden Surface</th>
+				<th>Build Surface</th>
+				<th>Garage Surface</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="house:${allHouses}">
+				<td th:text="${house.streetName}">Street Name</td>
+				<td th:text="${house.streetNumber}">Street Number</td>
+				<td th:text="${house.town}">Town</td>
+				<td th:text="${house.country}">Country</td>
+				<td th:text="${house.id}">House Id</td>
+				<td th:text="${house.id}">House Id</td>
+				<td th:text="${house.houseDetail.surfaceTotal}">Total Surface</td>
+				<td th:text="${house.houseDetail.surfaceGarden}">Garden Surface</td>
+				<td th:text="${house.houseDetail.surfaceBuild}">Build Surface</td>
+				<td th:text="${house.houseDetail.surfaceGarage}">Garage Surface</td>
+				<td><a th:href="@{/house/update(house_id=${house.id})}">Modify
+						House</a> <br />
+				<a th:href="@{/house/delete(house_id=${house.id})}">Delete
+						House</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<p>
+		<a th:href="@{/}">Return to Main Page</a>
+	</p>
+</body>
+</html>

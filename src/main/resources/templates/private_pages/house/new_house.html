@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>New House Form</h1>
+
+	<div>
+		<form action="#" th:action="@{/house/new_house}"
+			th:object="${houseDTO}" method="post">
+			<p>
+				<label for="streetName">Street Name:</label> <input type="text"
+					th:field="*{streetName}" name="streetName" />
+			</p>
+			<p>
+				<label for="streetNumber">Street Number:</label> <input
+					type="number" th:field="*{streetNumber}" name="streetNumber" />
+			</p>
+			<p>
+				<label for="town">Town Name:</label> <input type="text"
+					th:field="*{town}" name="town" />
+			</p>
+			<p>
+				<label for="country">Country Name:</label> <input type="text"
+					th:field="*{country}" name="country" />
+			</p>
+			<p>
+				<label for="surfaceTotal">Total Surface:</label> <input
+					type="number" step="0.1" th:field="*{surfaceTotal}"
+					name="surfaceTotal" />
+			</p>
+			<p>
+				<label for="surfaceGarden">Garden Surface:</label> <input
+					type="number" step="0.1" th:field="*{surfaceGarden}"
+					name="surfaceGarden" />
+			</p>
+			<p>
+				<label for="surfaceBuild">Build Surface:</label> <input
+					type="number" step="0.1" th:field="*{surfaceBuild}"
+					name="surfaceBuild" />
+			</p>
+			<p>
+				<label for="surfaceGarage">Garage Surface:</label> <input
+					type="number" step="0.1" th:field="*{surfaceGarage}"
+					name="surfaceGarage" />
+			</p>
+			<p>
+				<label for="rooms">Number of Rooms:</label> <input type="number"
+					th:field="*{rooms}" name="rooms" />
+			</p>
+			<p>
+				<label for="bedRooms">Number of Bedrooms:</label> <input
+					type="number" th:field="*{bedRooms}" name="bedRooms" />
+			</p>
+			<p>
+				<label for="restRooms">Number of Restrooms:</label> <input
+					type="number" th:field="*{restRooms}" name="restRooms" />
+			</p>
+			<p>
+				<button type="submit">Register your House</button>
+			</p>
+		</form>
+	</div>
+</body>
+</html>

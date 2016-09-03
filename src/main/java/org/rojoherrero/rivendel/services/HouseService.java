@@ -1,24 +1,19 @@
 package org.rojoherrero.rivendel.services;
 
-import java.util.List;
-
-import org.rojoherrero.rivendel.models.entities.House;
-import org.rojoherrero.rivendel.models.forms.NewHouseForm;
-import org.rojoherrero.rivendel.models.forms.UpdateHouseForm;
+import org.rojoherrero.rivendel.dto.HouseDTO;
+import org.rojoherrero.rivendel.entities.House;
 
 public interface HouseService {
 
-	Long addHouse(NewHouseForm newHouseForm);
+	void saveHouse(HouseDTO houseDTO);
 
-	void updateHouse(Long houseId, UpdateHouseForm updateHouseForm);
-
-	void deleteHouse(Long houseId);
-
-	List<House> retrieveAllHouses();
+	Iterable<House> retrieveAllHouses();
 	
-	House retrieveHouseById(Long houseId);
+	House retrieveHouseById(long houseId); 
 	
-	List<House> retrieveHousesByTown(String town);
+	void deleteHouseById(long houseId);
 	
-	List<String> retrieveTownNames();
+	HouseDTO retrieveHouseToUpdate(long houseId);
+	
+	void updateHouse(long houseId, HouseDTO newHouseValues);
 }
