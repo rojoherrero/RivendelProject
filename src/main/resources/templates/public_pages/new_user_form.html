@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="#" th:action="@{/user/create}" th:object="${userDTO}" method="post">
+		<div>
+			<label for="email">Type your email</label> 
+			<input name="email"
+					th:field="*{email}" type="email" required="required"
+					autofocus="autofocus" />
+		</div>
+		<div>
+			<label for="password">Type your password</label> 
+			<input name="password"
+					th:field="*{password}" type="password" required="required"
+					autofocus="autofocus" />
+		</div>
+		<div>
+			<label for="passwordRepeated">Repeat your password</label> 
+			<input name="passwordRepeated"
+					th:field="*{passwordRepeated}" type="password" required="required"
+					autofocus="autofocus" />
+		</div>
+		<div>
+			<button type="submit">Register</button>
+		</div>
+	</form>
+</body>
+</html>
