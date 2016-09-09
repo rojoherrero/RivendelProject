@@ -1,25 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8"/>
+<meta charset="UTF-8" />
 <title>Insert title here</title>
 </head>
 <body>
-	<div th:if="${param.error}">Invalid username and password.</div>
-	<div th:if="${param.logout}">You have been logged out.</div>
 	<form th:action="@{/login}" method="post">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
 		<div>
-			<label> User Name : <input type="text" name="username" />
-			</label>
+			<label for="email">Email address</label> <input type="email"
+				name="email" id="email" required="required" autofocus="autofocus" />
 		</div>
 		<div>
-			<label> Password: <input type="password" name="password" />
-			</label>
+			<label for="password">Password</label> <input type="password"
+				name="password" id="password" required="required" />
+		</div>
+		<div>
+			<label for="remember-me">Remember me</label> <input type="checkbox"
+				name="remember-me" id="remember-me" />
 		</div>
 		<div>
 			<input type="submit" value="Sign In" />
 		</div>
 	</form>
-
+	<!--  <p th:if="${error != null}"
+		th:text="The email or password you have entered is invalid, try again."></p>-->
 </body>
 </html>
